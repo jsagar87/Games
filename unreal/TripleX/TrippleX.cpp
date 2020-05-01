@@ -23,6 +23,10 @@ int main(){
     cout << "+ The codes multiply to give: " << CodeProduct << endl ;
 
     int PlayerGuess;
+    cout << endl << "enter your guess now :: " ;
+    cin >> PlayerGuess;
+
+    cout << endl << "You entered: " << PlayerGuess << endl;
 
     return 0;
 }
