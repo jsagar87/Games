@@ -2,8 +2,7 @@
 
 using namespace std;
 
-int main(){
-
+void Challenge(int diffcultyLevel) {
     // This is welcome message
     cout << "You're the phishy guy. Trying to sneak into colleagues Workstation." << endl ;
     cout << "Enter the correct code to continue..." << endl ;
@@ -22,11 +21,29 @@ int main(){
     cout << "+ The codes add-up to: " << CodeSum  << endl ;
     cout << "+ The codes multiply to give: " << CodeProduct << endl ;
 
-    int PlayerGuess;
+    // Store player guess
+    int GuessA, GuessB, GuessC;
     cout << endl << "enter your guess now :: " ;
-    cin >> PlayerGuess;
+    // cin >> GuessA;
+    // cin >> GuessB;
+    // cin >> GuessB;
 
-    cout << endl << "You entered: " << PlayerGuess << endl;
+    // // cout << endl << "You entered: " << GuessA << GuessB << GuessC << endl;
 
+    int GuessSum, GuessProduct;
+    GuessSum = GuessA + GuessB + GuessC ;
+    GuessProduct = GuessA * GuessB * GuessC ;
+
+    if (CodeSum == GuessSum && CodeProduct == GuessProduct) {
+        cout << endl << "You win !" << endl;
+    }
+    else
+    {
+        cout << endl << "You lose!" << endl;
+    }
+}
+
+int main(){
+    
     return 0;
 }
