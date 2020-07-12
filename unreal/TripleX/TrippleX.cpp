@@ -44,6 +44,6 @@ void Challenge(int diffcultyLevel) {
 }
 
 int main(){
-    
+    Challenge(2);
     return 0;
 }
