@@ -1,16 +1,25 @@
 #include <iostream>
+#include <vector>
+#include <ctime>
 
 using namespace std;
 
-void Challenge(int diffcultyLevel) {
-    // This is welcome message
-    cout << "You're the phishy guy. Trying to sneak into colleagues Workstation." << endl ;
-    cout << "Enter the correct code to continue..." << endl ;
+void PrintIntroduction(int Difficulty)
+{
+// This is welcome message
+    cout << "\n\nYou're a secret agent breaking into a level "<<  Difficulty << endl ;
+    cout << "Enter the correct code to continue...\n" << endl ;
+}
 
+bool PlayGame(int Difficulty)
+{
+    PrintIntroduction(Difficulty);
+    
     // Declare 3 number code
-    const int CodeA = 4;
-    const int CodeB = 3;
-    const int CodeC = 2;
+
+    const int CodeA = rand() % Difficulty + Difficulty;
+    const int CodeB = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty ;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB *CodeC;
@@ -24,26 +33,42 @@ void Challenge(int diffcultyLevel) {
     // Store player guess
     int GuessA, GuessB, GuessC;
     cout << endl << "enter your guess now :: " ;
-    // cin >> GuessA;
-    // cin >> GuessB;
-    // cin >> GuessB;
-
-    // // cout << endl << "You entered: " << GuessA << GuessB << GuessC << endl;
+    cin >> GuessA;
+    cin >> GuessB;
+    cin >> GuessC;
 
     int GuessSum, GuessProduct;
     GuessSum = GuessA + GuessB + GuessC ;
     GuessProduct = GuessA * GuessB * GuessC ;
 
-    if (CodeSum == GuessSum && CodeProduct == GuessProduct) {
-        cout << endl << "You win !" << endl;
+    if (CodeSum == GuessSum && CodeProduct == GuessProduct)
+    {
+        cout << endl << "*** Well Done agent! You have extracted a file! Keep going! ***" << endl;
+        return true;
     }
     else
-    {
-        cout << endl << "You lose!" << endl;
+    {  
+        cout << endl << "*** You entered the wrong code! Careful agent! Try again! ***" << endl;
+        return false;
     }
 }
 
-int main(){
-    Challenge(2);
+int main()
+{
+    srand(time(NULL)); 
+    int LevelDifficulty = 1;
+    const int MaxDifficulty = 5;
+    while (LevelDifficulty <= MaxDifficulty) // Loop untill all levels are completed
+    {
+        // std::cout << rand() << "\n";
+        bool bLevelCOmplete = PlayGame(LevelDifficulty);
+        std::cin.clear();       // Clears any errors
+        std::cin.ignore();      // Discards the buffer
+        if (bLevelCOmplete)
+        {
+            LevelDifficulty++;
+        }
+    }
+    cout << "\n *** Great work agent! You got all the files! Now  get out of there! ***\n" ;
     return 0;
 }
